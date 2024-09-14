@@ -1,0 +1,3 @@
+Install nautilus-open-any-terminal
+Run: 
+    settings set com.github.stunkymonkey.nautilus-open-any-terminal terminal alacritty

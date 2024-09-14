@@ -1,0 +1,21 @@
+# Change theme, for adw-gtk3
+## light
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
+
+## dark
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+## Gnome default
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita' && gsettings set org.gnome.desktop.interface color-scheme 'default'
+
+# Icons
+gsettings set org.gnome.desktop.interface icon-theme 'MyIconTheme'
+
+# Windows
+gsettings set org.gnome.desktop.wm.preferences theme "CoolestThemeOnEarth"
+
+# Fonts
+gsettings set org.gnome.desktop.interface document-font-name 'Sans 10'
+gsettings set org.gnome.desktop.interface font-name 'Ubuntu 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 11'
+gsettings set org.gnome.nautilus.desktop font 'Ubuntu 10'

@@ -1,0 +1,132 @@
+{
+	"layer": "top",
+	"position": "top",
+	"margin": "0 0 0 0",
+	"modules-left": [ "custom/logo", "custom/finder", "hyprland/window", "custom/archivo", "custom/ejecutar", "custom/portapapeles"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": [ "hyprland/submap", "hyprland/language", "tray", "battery" , "backlight", "pulseaudio", "clock"],
+
+	"custom/logo": {
+		"format": "",
+		"on-click": "~/.config/rofi/bin/powermenu",
+		"tooltip": false
+	},
+	"custom/finder": {
+		"format": "Finder",
+		"on-click": "~/.config/rofi/bin/launcher"
+	},
+	"custom/archivo": {
+		"format": "Files",
+		"on-click": "~/.config/rofi/bin/filesearch"
+	},
+	"custom/ejecutar": {
+		"format": "Run",
+		"on-click": "~/.config/rofi/bin/runner"
+	},
+	"custom/portapapeles": {
+		"format": "Clipboard",
+		"on-click": "~/.config/rofi/bin/clipboard"
+	},
+	"hyprland/window": {
+    	"format": "",
+		"on-click": "~/.config/rofi/bin/launcher",
+		"rewrite": {
+			"brave-browser": "Brave Browser",
+			"thunar": "Thunar",
+			"org.gnome.Nautilus": "Nautilus",
+			"org.gnome.baobab": "Analizador de Disco",
+			"obsidian": "Obsidian",
+			"libreoffice-writer": "Writer",
+			"libreoffice-impress": "Impress",
+			"libreoffice-calc": "Calc",
+			"libreoffice-draw": "Draw",
+			"libreoffice-math": "Math",
+			"libreoffice-startcenter": "LibreOffice",
+		},
+    	"separate-outputs": true,
+		"max-length": 35
+	},
+	"hyprland/workspaces": {
+		"all-outputs": false,
+		"active-only": false,
+		"format": "{name}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		},
+		"persistent-workspaces": {
+        	"*": 5
+       	},
+		"on-click": "activate"
+	},
+	"hyprland/submap": {
+		"format": "{}",
+	},
+	"backlight": {
+	    "device": "intel_backlight",
+	    "format": "{percent}% {icon}",
+	    "format-icons": ["󰃞", "󰃠"]
+	},
+	"pulseaudio": {
+		"on-click": "amixer set Master toggle",
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{volume}% {icon}",
+		"format-muted": "Muted ",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+	"temperature": {
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": [""]
+	},
+	"tray": {
+		"icon-size": 13,
+		"spacing": 22
+	},
+	// "network": {
+	//	"tooltip": false,
+	//	"format-wifi": "󰤥  {essid} {ipaddr}",
+	//	"format-ethernet": " {ipaddr}"
+	"network": {
+		"on-click": "~/.config/rofi/bin/wifi",
+		"format": "{ifname}",
+		"format-wifi": "󰤥 ",
+		"format-ethernet": " ",
+		"format-disconnected": "", //An empty format will hide the module.
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"tooltip-format-wifi": "{essid} - ({ipaddr}) - ({signalStrength}%)",
+		"tooltip-format-ethernet": "{ifname} - {ipaddr}/{cidr}",
+		"tooltip-format-disconnected": "Sin Conexión a Internet",
+		"max-length": 30
+	},
+	"battery": {
+		"interval": 30,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% ",
+		"format-icons": ["", "", "", "", ""],
+	},
+	"cpu": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+	"memory": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+	"hyprland/language": {
+    	"format": "{}",
+		"format-es": "ES",
+		"format-en": "EN"
+	},
+	"clock": {
+		"timezone": "America/Guayaquil",
+        "format": "{:L%a %b. %d  %H:%M}",
+        "tooltip": false,
+    },
+}

@@ -1,2 +1,2 @@
-# arch
-Mis configuraciones para una instalación limpia de Arch Linux, se apoyan en Hyprland, el compositor de Wayland
+# .arch
+My config files for my principal desktop, based on Arch Linux with Wayland (Hyprland) and Pipewire

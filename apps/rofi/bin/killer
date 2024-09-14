@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+selected="$(ps -u $USER | \
+            dmenu -theme "$HOME/.config/rofi/config/standardtheme.rasi" -i -p "Kill Process" \
+            awk '{print $1""$4}')"; 
+
+if [[ ! -z $selected ]]; then
+
+    answer="$(echo -e "Continue\nCancel" | \
+        dmenu -theme "$HOME/.config/rofi/config/standardtheme.rasi" -i -p "$selected will be stopped ")"
+
+    if [[ $answer == "Continue" ]]; then
+        selpid="$(awk '{print $1}' <<< $selected)"; 
+        kill -9 $selpid
+    fi
+fi
+
+exit 0

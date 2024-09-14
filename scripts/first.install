@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+echo "Let's install the packages..."
+
+sudo pacman -S fish dunst libnotify hyprpaper xdg-desktop-portal-hyprland \
+wayland xorg-xwayland cliphist wl-clipboard pipewire pipewire-alsa pipewire-pulse \
+pipewire-jack wireplumber waybar alacritty git nemo file-roller nemo-fileroller neovim \
+gvfs-smb ffmpegthumbnailer tumbler xdg-desktop-portal-gtk materia-gtk-theme kvantum-theme-materia papirus-icon-theme \
+bluez bluez-utils blueman network-manager-applet btop neofetch mpv imv gnome-keyring \
+grim slurp ranger eza bat pavucontrol nodejs yarn inxi alsa-tools alsa-utils \
+kvantum gtk-engines gtk-engine-murrine lxappearance brightnessctl polkit-gnome xorg-xhost \
+udisks2 hyprlock hypridle libva-utils ttf-opensans noto-fonts-emoji gammastep \
+socat jq hyprland hyprcursor hyprwayland-scanner hyprutils hyprlang bash-completion --noconfirm
+
+read -p "en or es?: " lang
+     case $lang in
+        "en")
+            mkdir -p ~/Documents
+            cd ~/Documents
+            git clone https://aur.archlinux.org/paru.git
+            cd paru
+            makepkg -si --noconfirm
+            ;;
+        "es")
+            mkdir -p ~/Documentos
+            cd ~/Documentos
+            git clone https://aur.archlinux.org/paru.git
+            cd paru
+            makepkg -si --noconfirm
+            ;;
+    esac
+
+cd
+paru -Sy
+paru -S rofi-lbonn-wayland-git
+systemctl enable --user wireplumber
+systemctl enable --user pipewire
+
+# hyprpm update
+# hyprpm add https://github.com/hyprwm/hyprland-plugins
+# hyprpm enable hyprbars
+
+gsettings set org.gnome.desktop.default-applications.terminal exec alacritty
+gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
+
+xdg-mime default imv.desktop image/jpeg
+xdg-mime default imv.desktop image/jpg
+xdg-mime default imv.desktop image/png
+
+xdg-mime default nemo.desktop inode/directory
+
+sudo systemctl enable bluetooth
+
+sudo ln -s /usr/bin/rofi /usr/bin/dmenu
+
+echo "HandlePowerKey=ignore" | sudo tee --append /etc/systemd/logind.conf
+sudo systemctl kill -s HUP systemd-logind
+
+echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee --append /etc/environment
+echo "MOZ_ENABLE_WAYLAND=1" | sudo tee --append /etc/environment
+
+echo "Don't forget to execute ./fonts.sh and ./config.sh scripts"
+echo "SERIOUSLY, EXECUTE THE FVCKING SCRIPTS..."
